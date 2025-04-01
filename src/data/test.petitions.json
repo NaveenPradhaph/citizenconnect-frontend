@@ -1,0 +1,318 @@
+[{
+  "_id": {
+    "$oid": "67d06f4f8a7a751ab10a8d4b"
+  },
+  "title": "Fix Potholes on Main Street",
+  "description": "The potholes on Main Street have been causing damage to vehicles and are a safety hazard. We request immediate repairs.",
+  "category": "Infrastructure",
+  "status": "in_progress",
+  "priority": "high",
+  "createdAt": "2023-09-01T00:00:00Z",
+  "updatedAt": "2023-09-26T00:00:00Z",
+  "userId": "user1",
+  "assignedTo": "user3",
+  "department": "dept1",
+  "governmentLevel": "local",
+  "blockchainId": "bchain123",
+  "aiSummary": "Urgent infrastructure repair needed on Main Street due to potholes causing vehicle damage and safety concerns.",
+  "aiRecommendation": "Assign to Public Works department with high priority for immediate assessment and repair.",
+  "votes": 156,
+  "comments": [
+    {
+      "id": "comment1",
+      "text": "I've damaged two tires this month alone!",
+      "createdAt": "2023-09-03T00:00:00Z",
+      "userId": "user1",
+      "userName": "John Citizen",
+      "userRole": "citizen"
+    },
+    {
+      "id": "comment2",
+      "text": "We've scheduled an assessment team to evaluate the damage next week.",
+      "createdAt": "2023-09-06T00:00:00Z",
+      "userId": "user3",
+      "userName": "Michael Officer",
+      "userRole": "government"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "timeline1",
+      "eventType": "created",
+      "description": "Petition submitted",
+      "createdAt": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "timeline2",
+      "eventType": "status_change",
+      "description": "Status changed to Under Review",
+      "createdAt": "2023-09-06T00:00:00Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline3",
+      "eventType": "department_change",
+      "description": "Assigned to Public Works Department",
+      "createdAt": "2023-09-08T00:00:00Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline4",
+      "eventType": "status_change",
+      "description": "Status changed to In Progress",
+      "createdAt": "2023-09-15T00:00:00Z",
+      "userId": "user3",
+      "userName": "Michael Officer"
+    }
+  ],
+  "id": "petition1"
+},
+{
+  "_id": {
+    "$oid": "67d06f4f8a7a751ab10a8d4c"
+  },
+  "id": "petition2",
+  "title": "Improve Street Lighting in Downtown Area",
+  "description": "The downtown area has inadequate street lighting, making it unsafe for pedestrians at night. We request additional lighting installations.",
+  "category": "Public Safety",
+  "status": "under_review",
+  "priority": "medium",
+  "createdAt": "2023-09-15T00:00:00Z",
+  "updatedAt": "2023-09-20T00:00:00Z",
+  "userId": "user1",
+  "governmentLevel": "local",
+  "blockchainId": "bchain456",
+  "aiSummary": "Request for improved street lighting in downtown area due to safety concerns for pedestrians at night.",
+  "aiRecommendation": "Assign to Public Works with medium priority for assessment of current lighting infrastructure.",
+  "votes": 89,
+  "comments": [
+    {
+      "id": "comment3",
+      "text": "I feel unsafe walking home from work after dark.",
+      "createdAt": "2023-09-16T00:00:00Z",
+      "userId": "user1",
+      "userName": "John Citizen",
+      "userRole": "citizen"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "timeline5",
+      "eventType": "created",
+      "description": "Petition submitted",
+      "createdAt": "2023-09-15T00:00:00Z"
+    },
+    {
+      "id": "timeline6",
+      "eventType": "status_change",
+      "description": "Status changed to Under Review",
+      "createdAt": "2023-09-20T00:00:00Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67d06f4f8a7a751ab10a8d4d"
+  },
+  "id": "petition3",
+  "title": "Establish New Community Health Center",
+  "description": "Our growing community needs a local health center to provide basic medical services. The nearest facility is over 20 miles away.",
+  "category": "Healthcare",
+  "status": "pending",
+  "priority": "high",
+  "createdAt": "2024-03-06T00:00:00.000Z",
+  "updatedAt": "2024-03-06T00:00:00.000Z",
+  "userId": "user1",
+  "governmentLevel": "state",
+  "blockchainId": "bchain789",
+  "aiSummary": "Request for a new community health center due to lack of accessible healthcare facilities within 20 miles.",
+  "aiRecommendation": "Forward to State Health Services department for evaluation of healthcare coverage in the region.",
+  "votes": 210,
+  "comments": [],
+  "timeline": [
+    {
+      "id": "timeline7",
+      "eventType": "created",
+      "description": "Petition submitted",
+      "createdAt": "2024-03-06T00:00:00.000Z"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67d06f4f8a7a751ab10a8d4e"
+  },
+  "id": "petition4",
+  "title": "Implement Recycling Program",
+  "description": "Our community lacks proper recycling facilities. We propose implementing a comprehensive recycling program to reduce waste.",
+  "category": "Environment",
+  "status": "resolved",
+  "priority": "medium",
+  "createdAt": "2024-03-06T00:00:00.000Z",
+  "updatedAt": "2024-03-06T00:00:00.000Z",
+  "userId": "user1",
+  "assignedTo": "user4",
+  "department": "dept5",
+  "governmentLevel": "state",
+  "blockchainId": "bchain101",
+  "aiSummary": "Proposal for implementing a community recycling program to address lack of waste management infrastructure.",
+  "aiRecommendation": "Assign to Environmental Protection department to develop a sustainable recycling initiative.",
+  "votes": 178,
+  "comments": [
+    {
+      "id": "comment4",
+      "text": "This would greatly reduce our community's environmental footprint.",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user1",
+      "userName": "John Citizen",
+      "userRole": "citizen"
+    },
+    {
+      "id": "comment5",
+      "text": "We're pleased to announce that funding has been approved for this initiative.",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user4",
+      "userName": "Lisa Manager",
+      "userRole": "government"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "timeline8",
+      "eventType": "created",
+      "description": "Petition submitted",
+      "createdAt": "2024-03-06T00:00:00.000Z"
+    },
+    {
+      "id": "timeline9",
+      "eventType": "status_change",
+      "description": "Status changed to Under Review",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline10",
+      "eventType": "department_change",
+      "description": "Assigned to Environmental Protection Department",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline11",
+      "eventType": "status_change",
+      "description": "Status changed to In Progress",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user4",
+      "userName": "Lisa Manager"
+    },
+    {
+      "id": "timeline12",
+      "eventType": "status_change",
+      "description": "Status changed to Resolved",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user4",
+      "userName": "Lisa Manager"
+    },
+    {
+      "id": "timeline13",
+      "eventType": "resolution",
+      "description": "Recycling program approved and scheduled for implementation next month",
+      "createdAt": "2024-03-06T00:00:00.000Z",
+      "userId": "user4",
+      "userName": "Lisa Manager"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67d06f4f8a7a751ab10a8d4f"
+  },
+  "id": "petition5",
+  "title": "Upgrade School Computer Labs",
+  "description": "The computer labs in our district schools are outdated and insufficient for modern educational needs. We request upgrades to support digital learning.",
+  "category": "Education",
+  "status": "assigned",
+  "priority": "medium",
+  "createdAt": "2024-01-21T00:00:00.000Z",
+  "updatedAt": "2024-02-05T00:00:00.000Z",
+  "userId": "user1",
+  "department": "dept3",
+  "governmentLevel": "central",
+  "blockchainId": "bchain202",
+  "aiSummary": "Request for upgrading outdated computer labs in district schools to support modern digital education requirements.",
+  "aiRecommendation": "Forward to Education department to assess current technology infrastructure and develop upgrade plan.",
+  "votes": 145,
+  "comments": [
+    {
+      "id": "comment6",
+      "text": "Our students need access to current technology to be competitive.",
+      "createdAt": "2024-01-22T00:00:00.000Z",
+      "userId": "user1",
+      "userName": "John Citizen",
+      "userRole": "citizen"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "timeline14",
+      "eventType": "created",
+      "description": "Petition submitted",
+      "createdAt": "2024-01-21T00:00:00.000Z"
+    },
+    {
+      "id": "timeline15",
+      "eventType": "status_change",
+      "description": "Status changed to Under Review",
+      "createdAt": "2024-01-26T00:00:00.000Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline16",
+      "eventType": "department_change",
+      "description": "Assigned to Education Department",
+      "createdAt": "2024-01-31T00:00:00.000Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    },
+    {
+      "id": "timeline17",
+      "eventType": "status_change",
+      "description": "Status changed to Assigned",
+      "createdAt": "2024-02-05T00:00:00.000Z",
+      "userId": "user2",
+      "userName": "Sarah Admin"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67d15e96f2f479038e2e42be"
+  },
+  "title": "Improve Public Transportation",
+  "description": "We need more bus routes and better scheduling in downtown.",
+  "category": "Infrastructure",
+  "status": "Waiting",
+  "priority": "High",
+  "userId": {
+    "$oid": "67d1548ef2f479038e2e42a0"
+  },
+  "governmentLevel": "Local",
+  "votes": 0,
+  "attachments": [],
+  "createdAt": {
+    "$date": "2025-03-12T10:14:46.014Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-12T10:14:46.014Z"
+  },
+  "comments": [],
+  "timeline": [],
+  "__v": 0
+}]
