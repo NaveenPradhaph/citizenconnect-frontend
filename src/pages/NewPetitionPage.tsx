@@ -111,7 +111,7 @@ const NewPetitionPage: React.FC = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setSummary(data.summary);
+        // setSummary(data.summary);
         setCategory(data.department);
         setUrgency(data.prediction);
       } else {
@@ -155,6 +155,7 @@ const NewPetitionPage: React.FC = () => {
         },
         body: formDataToSend,
       });
+      console.log(response);
   
       if (response.ok) {
         setShowSuccess(true);

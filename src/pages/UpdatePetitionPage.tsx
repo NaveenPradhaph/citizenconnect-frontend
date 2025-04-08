@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// PetitionCard
 import { ArrowLeft } from "lucide-react";
-// import PetitionCard from "../components/Petitions/PetitionCard";
 import UpdateDetailCard from "../components/Petitions/UpdateDetailCard";
 
 const UpdatePetitionPage = () => {
@@ -11,68 +8,80 @@ const UpdatePetitionPage = () => {
   const navigate = useNavigate();
   const [petition, setPetition] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [timelineEvent, setTimelineEvent] = useState({ eventType: "", description: "" });
+  const [timelineEvent, setTimelineEvent] = useState({
+    eventType: "",
+    description: "",
+  });
   const [newDepartment, setNewDepartment] = useState("");
   const [newStatus, setNewStatus] = useState("");
   const departments = [
-    'Infrastructure',
-    'Public Safety',
-    'Healthcare',
-    'Environment',
-    'Education',
-    'Transportation',
-    'Housing',
-    'Economic Development',
-    'Social Services',
-    'Other'
-    ];
-  const status = ["Waiting", "Under Review", "In Progress", "Resolved", "Declined", "Pending"];
-    
-  useEffect(() => {
-      // Fetch the petition details
-      const fetchPetition = async () => {
-        setIsLoading(true);
-        try {
-          const response = await fetch(`http://localhost:5000/api/petition/petitions/${id}`);
-          const data = await response.json();
+    "Infrastructure",
+    "Public Safety",
+    "Healthcare",
+    "Environment",
+    "Education",
+    "Transportation",
+    "Housing",
+    "Economic Development",
+    "Social Services",
+    "Other",
+  ];
+  const status = [
+    "Waiting",
+    "Under Review",
+    "In Progress",
+    "Resolved",
+    "Declined",
+    "Pending",
+  ];
 
-          if (!response.ok) {
-            throw new Error(data.message || "Failed to fetch petition");
-          }
-  
-          setPetition(data);
-        } catch (err: any) {
-          console.error(err);
-        } finally {
-          setIsLoading(false);
+  useEffect(() => {
+    // Fetch the petition details
+    const fetchPetition = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/petition/petitions/${id}`
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to fetch petition");
         }
+
+        setPetition(data);
+      } catch (err: any) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
     };
-    console.log("petition" , petition);
+    console.log("petition", petition);
     fetchPetition();
   }, [id]);
-  
+
   const handleAddEvent = async () => {
     if (!timelineEvent.eventType || !timelineEvent.description) return;
-    // console.log('====================================');
-    // console.log(timelineEvent.description);
-    // console.log('====================================');
-  
+
     try {
-      const response = await fetch(`http://localhost:5000/api/petitions/${id}/timeline`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          eventType: timelineEvent.eventType,
-          description: timelineEvent.description,
-        }),
-      });
-  
+      const response = await fetch(
+        `http://localhost:5000/api/petitions/${id}/timeline`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            eventType: timelineEvent.eventType,
+            description: timelineEvent.description,
+          }),
+        }
+      );
+
       if (!response.ok) {
-        throw new Error('Failed to add timeline event');
+        throw new Error("Failed to add timeline event");
       }
-  
+
       const newEvent = await response.json(); // Assuming the API returns the new event
       setPetition((prev) => ({
         ...prev,
@@ -82,78 +91,92 @@ const UpdatePetitionPage = () => {
     } catch (error) {
       console.error("Error adding event:", error);
     }
-
   };
-  
-  const handleUpdateStatus = async() =>{
-    if(!newStatus) return;
-    try{
-      const response = await fetch(`http://localhost:5000/api/petitions/${id}/status`,{
-        method : 'PATCH',
-        headers: {
+
+  const handleUpdateStatus = async () => {
+    if (!newStatus) return;
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/petitions/${id}/status`,
+        {
+          method: "PATCH",
+          headers: {
             "Content-Type": "application/json",
           },
-        body: JSON.stringify({ status: newStatus }),
-      });
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
 
-      const response1 = await fetch(`http://localhost:5000/api/petitions/${id}/timeline`, {
-          method: 'POST',
+      const response1 = await fetch(
+        `http://localhost:5000/api/petitions/${id}/timeline`,
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             eventType: "Status change",
             description: `The petition is now under ${newStatus}`,
           }),
-        });
+        }
+      );
 
-      if(response1.ok){
-          navigate("/petitions");
+      if (response1.ok) {
+        navigate("/petitions");
       }
-      if(response.ok){
-          setPetition((prev) => ({ ...prev, department: response.data.department }));
-          setNewStatus("");
+      if (response.ok) {
+        setPetition((prev) => ({
+          ...prev,
+          department: response.data.department,
+        }));
+        setNewStatus("");
       }
-
-    }catch(err){
+    } catch (err) {
       console.error("Error updating status:", err);
     }
-
   };
 
-  const handleUpdateDepartment = async() => {
+  const handleUpdateDepartment = async () => {
     if (!newDepartment) return;
-    try{
-        const response = await fetch(`http://localhost:5000/api/petitions/${id}/department`,{
-            method : 'PATCH',
-            headers: {
-                "Content-Type": "application/json",
-              },
-            body: JSON.stringify({ department: newDepartment }),
-        });
-
-        const response1 = await fetch(`http://localhost:5000/api/petitions/${id}/timeline`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              eventType: "Department change",
-              description: `The petition is now under ${newDepartment}`,
-            }),
-          });
-
-        if(response1.ok){
-            navigate(-1);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/petitions/${id}/department`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ department: newDepartment }),
         }
-        if(response.ok){
-            setPetition((prev) => ({ ...prev, department: response.data.department }));
-            setNewDepartment("");
+      );
+
+      const response1 = await fetch(
+        `http://localhost:5000/api/petitions/${id}/timeline`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            eventType: "Department change",
+            description: `The petition is now under ${newDepartment}`,
+          }),
         }
-    }catch(error){
-        console.error("Error updating department:", error);
+      );
+
+      if (response1.ok) {
+        navigate("/petitions");
+      }
+      if (response.ok) {
+        setPetition((prev) => ({
+          ...prev,
+          department: response.data.department,
+        }));
+        setNewDepartment("");
+      }
+    } catch (error) {
+      console.error("Error updating department:", error);
     }
-    
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -166,27 +189,37 @@ const UpdatePetitionPage = () => {
       >
         <ArrowLeft size={16} className="mr-1" /> Back
       </button>
-      <h1 className="text-2xl font-semibold text-gray-800 mb-6">Update Petition</h1>
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6">
+        Update Petition
+      </h1>
 
       {/* Petition Details */}
       <UpdateDetailCard key={petition._id} petition={petition} />
-      
 
       {/* Add Timeline Event */}
       <div className="bg-white p-6 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Add to Timeline</h3>
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          Add to Timeline
+        </h3>
         <div className="grid gap-4">
           <input
             type="text"
             placeholder="Event Type"
             value={timelineEvent.eventType}
-            onChange={(e) => setTimelineEvent({ ...timelineEvent, eventType: e.target.value })}
+            onChange={(e) =>
+              setTimelineEvent({ ...timelineEvent, eventType: e.target.value })
+            }
             className="border-gray-300 rounded-lg p-2 w-full"
           />
           <textarea
             placeholder="Event Description"
             value={timelineEvent.description}
-            onChange={(e) => setTimelineEvent({ ...timelineEvent, description: e.target.value })}
+            onChange={(e) =>
+              setTimelineEvent({
+                ...timelineEvent,
+                description: e.target.value,
+              })
+            }
             className="border-gray-300 rounded-lg p-2 w-full"
           ></textarea>
           <button
@@ -200,7 +233,9 @@ const UpdatePetitionPage = () => {
 
       {/* Update status */}
       <div className="bg-white p-6 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Update Status</h3>
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          Update Status
+        </h3>
         <div className="grid gap-4">
           <select
             value={newStatus}
@@ -225,7 +260,9 @@ const UpdatePetitionPage = () => {
 
       {/* Update Department */}
       <div className="bg-white p-6 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Update Department</h3>
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          Update Department
+        </h3>
         <div className="grid gap-4">
           <select
             value={newDepartment}
@@ -257,7 +294,9 @@ const UpdatePetitionPage = () => {
           <ul className="divide-y divide-gray-200">
             {petition.timeline.map((event, index) => (
               <li key={index} className="py-4">
-                <div className="text-sm font-medium text-gray-800">{event.eventType}</div>
+                <div className="text-sm font-medium text-gray-800">
+                  {event.eventType}
+                </div>
                 <p className="text-sm text-gray-600">{event.description}</p>
                 <span className="text-xs text-gray-500">
                   {new Date(event.createdAt).toLocaleDateString()}
