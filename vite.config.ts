@@ -7,7 +7,7 @@ export default defineConfig({
   //   allowedHosts : ["citizenconnect-frontend.vercel.app"]
   // },
   plugins: [react()],
-  base : process.env.VITE_BASE_PATH || "/citizenconnect-frontend",
+  base : process.env.VITE_BASE_PATH || "/",
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

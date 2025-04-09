@@ -9,8 +9,11 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/"
+        "dest": "/index.html"
       }
-    ]
+    ],
+    "buildCommand": "npm run build",
+    "devCommand": "npm run dev",
+    "outputDirectory": "dist"
   }
   
