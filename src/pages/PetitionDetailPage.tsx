@@ -104,7 +104,7 @@ const PetitionDetailsPage: React.FC = () => {
       const userRole = localStorage.getItem("role");
 
       const response = await fetch(
-        `http://localhost:5000/api/petition/petitions/${id}/comment`,
+        `https://citizenconnect-backend.vercel.app/api/petition/petitions/${id}/comment`,
         {
           method: "POST",
           headers: {
