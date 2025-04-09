@@ -28,7 +28,7 @@ const DashboardPage: React.FC = () => {
   useEffect(() => {
     const fetchPetitions = async () => {
       try{
-        const response = await fetch('http://localhost:5000/api/petitions');
+        const response = await fetch('https://citizenconnect-backend.vercel.app/api/petitions');
         const data = await response.json();
         if(response.ok){
           setPetition(data);

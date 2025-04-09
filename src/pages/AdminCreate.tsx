@@ -52,7 +52,7 @@ const AdminCreate: React.FC = () => {
     setIsLoading(true);
 
     try {
-        const response = await fetch("http://localhost:5000/api/auth/create-user", {
+        const response = await fetch("https://citizenconnect-backend.vercel.app/api/auth/create-user", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, phone, password, department, govId }),

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/petitions";
+const API_URL = "https://citizenconnect-backend.vercel.app/api/petitions";
 
 export const fetchPetitions = async () => {
   const response = await axios.get(API_URL);

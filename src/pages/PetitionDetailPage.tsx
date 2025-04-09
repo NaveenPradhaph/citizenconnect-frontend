@@ -16,7 +16,7 @@ const PetitionDetailsPage: React.FC = () => {
     const fetchPetition = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/api/petition/petitions/${id}`);
+        const response = await fetch(`https://citizenconnect-backend.vercel.app/api/petition/petitions/${id}`);
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.message || "Failed to fetch petition");
@@ -35,7 +35,7 @@ const PetitionDetailsPage: React.FC = () => {
       try{
         const userId = localStorage.getItem("userId");
         console.log(id);
-        let  url = `http://localhost:5000/api/petition/petitions/${id}/vote?userId=${userId}`;
+        let  url = `https://citizenconnect-backend.vercel.app/api/petition/petitions/${id}/vote?userId=${userId}`;
         const response = await fetch(url);
         const data = await response.json();
 
@@ -61,7 +61,7 @@ const PetitionDetailsPage: React.FC = () => {
         // Assuming userId is available (for example, from localStorage or context)
         const userId = localStorage.getItem("userId");
   
-        const response = await fetch(`http://localhost:5000/api/petition/petitions/${id}/vote`, {
+        const response = await fetch(`https://citizenconnect-backend.vercel.app/api/petition/petitions/${id}/vote`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -41,7 +41,7 @@ const UpdatePetitionPage = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:5000/api/petition/petitions/${id}`
+          `https://citizenconnect-backend.vercel.app/api/petition/petitions/${id}`
         );
         const data = await response.json();
 
@@ -65,7 +65,7 @@ const UpdatePetitionPage = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/petitions/${id}/timeline`,
+        `https://citizenconnect-backend.vercel.app/api/petitions/${id}/timeline`,
         {
           method: "POST",
           headers: {
@@ -97,7 +97,7 @@ const UpdatePetitionPage = () => {
     if (!newStatus) return;
     try {
       const response = await fetch(
-        `http://localhost:5000/api/petitions/${id}/status`,
+        `https://citizenconnect-backend.vercel.app/api/petitions/${id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -108,7 +108,7 @@ const UpdatePetitionPage = () => {
       );
 
       const response1 = await fetch(
-        `http://localhost:5000/api/petitions/${id}/timeline`,
+        `https://citizenconnect-backend.vercel.app/api/petitions/${id}/timeline`,
         {
           method: "POST",
           headers: {
@@ -140,7 +140,7 @@ const UpdatePetitionPage = () => {
     if (!newDepartment) return;
     try {
       const response = await fetch(
-        `http://localhost:5000/api/petitions/${id}/department`,
+        `https://citizenconnect-backend.vercel.app/api/petitions/${id}/department`,
         {
           method: "PATCH",
           headers: {
@@ -151,7 +151,7 @@ const UpdatePetitionPage = () => {
       );
 
       const response1 = await fetch(
-        `http://localhost:5000/api/petitions/${id}/timeline`,
+        `https://citizenconnect-backend.vercel.app/api/petitions/${id}/timeline`,
         {
           method: "POST",
           headers: {
