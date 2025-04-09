@@ -30,10 +30,6 @@ const PetitionsPage: React.FC = () => {
         const response = await fetch(url);
         const data = await response.json();
 
-        // console.log('====================================');
-        // // console.log(data);
-        // console.log('====================================');
-
         if (!response.ok) {
           throw new Error(data.message || "Failed to fetch petitions");
         }
@@ -49,6 +45,19 @@ const PetitionsPage: React.FC = () => {
 
     fetchPetitions();
   }, [role, department]);
+  useEffect(() => {
+    if (petitions.length > 0) {
+      setIsLoading(true);
+      applyFilters({
+        status: [],
+        category: [],
+        governmentLevel: [],
+        priority: [],
+        sortBy: "newest",
+      });
+      setIsLoading(false);
+    }
+  }, [petitions]);
 
   // Apply filters and search
   const applyFilters = (filters: any) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft,ArrowRight } from "lucide-react";
 import UpdateDetailCard from "../components/Petitions/UpdateDetailCard";
 
 const UpdatePetitionPage = () => {
@@ -183,12 +183,21 @@ const UpdatePetitionPage = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <div className="flex justify-between items-center mb-4">
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center text-indigo-600 hover:text-indigo-800 mb-4"
+        className="flex items-center text-indigo-600 hover:text-indigo-800"
       >
         <ArrowLeft size={16} className="mr-1" /> Back
       </button>
+      <button
+    onClick={() => navigate(`/petitions/${id}`)}
+    className="flex items-center text-indigo-600 hover:text-indigo-800"
+  >
+    View Petition
+    <ArrowRight size={16} className="ml-1" />
+  </button>
+  </div>
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Update Petition
       </h1>
