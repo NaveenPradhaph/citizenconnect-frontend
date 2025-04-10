@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ThumbsUp, Share } from "lucide-react";
+import { io } from "socket.io-client";
 // import { mockPetitions } from '../data/mockData';
 import { Petition } from "../types";
 import TimelineSection from "../components/Petitions/TimelineSection";
 import CommentsSection from "../components/Petitions/Comments";
 
+const socket = io("https://citizenconnect-backend.vercel.app"); // change if you're using localhost
 const PetitionDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [petition, setPetition] = useState<Petition | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
+  const [comments, setComments] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPetition = async () => {
@@ -27,6 +30,7 @@ const PetitionDetailsPage: React.FC = () => {
 
         setPetition(data);
         setVotes(data.votes);
+        setComments(data.comments);
       } catch (err: any) {
         console.error(err);
       } finally {
@@ -55,6 +59,19 @@ const PetitionDetailsPage: React.FC = () => {
 
     isVoted();
     fetchPetition();
+
+    // Listen to new comments
+    socket.on("new_comment", (data) => {
+      if (data.petitionId === id) {
+        setComments((prev) => [...prev, data.comment]);
+      }
+    });
+
+    // Cleanup on unmount
+    return () => {
+      socket.off("new_comment");
+    };
+
   }, [id]);
 
   const handleVote = async () => {
@@ -127,6 +144,7 @@ const PetitionDetailsPage: React.FC = () => {
 
       const updated = await response.json();
       setPetition(updated); // Refresh petition with new comment
+      setComments(updated.comments);
     } catch (err) {
       console.error("Failed to add comment:", err);
       alert("An error occurred while adding your comment.");
@@ -228,7 +246,7 @@ const PetitionDetailsPage: React.FC = () => {
       </div>
       <TimelineSection events={petition.timeline} />
       <CommentsSection
-        comments={petition.comments}
+        comments={comments}
         onAddComment={handleAddComment}
       />
     </>
